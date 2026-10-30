@@ -1,0 +1,29 @@
+[package]
+name = "otto"
+version = "0.1.0"
+edition = "2021"
+description = "a vault for coding agents: 2fa codes, logins and secrets they can use without seeing"
+license = "GPL-3.0-or-later"
+
+[[bin]]
+name = "otto"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+argon2 = { package = "rust-argon2", version = "3.0" }
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+data-encoding = "2"
+hmac = "0.12"
+keepass = { version = "0.15", features = ["save_kdbx4"] }
+libc = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+sha1 = "0.10"
+sha2 = "0.10"
+tokio = { version = "1", features = ["rt-multi-thread", "net", "io-util", "io-std", "sync", "macros", "time", "process"] }
+url = "2"
+
+[profile.release]
+strip = true
+lto = "thin"

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>otto: a vault your agents can use</title>
+<meta name="description" content="otto logs your coding agents into websites and Mac apps, enters 2FA codes, fills cards at checkout and runs sudo, on rules you set. The passwords stay on your Mac, out of the chat.">
+<meta name="theme-color" content="#f0ece2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161618" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="otto">
+<meta property="og:description" content="a vault your agents can use.">
+<meta property="og:image" content="https://otto.alfaoz.dev/og.png">
+<meta property="og:url" content="https://otto.alfaoz.dev/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/plex-mono-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plex-mono-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+<script src="/site.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+<header class="stage">
+  <nav class="nav">
+    <a class="mark" href="/" aria-label="otto"><span>ot</span><span>to</span></a>
+    <div class="links">
+      <a href="#features">features</a>
+      <a href="#setup">setup</a>
+      <a class="button small" href="/download/otto.dmg">download</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="copy">
+      <h1>a vault your agents can use.</h1>
+      <p class="lead">otto logs your coding agents into websites and Mac apps, enters 2FA codes, fills cards at checkout and runs sudo, on rules you set. the passwords stay on your Mac, out of the chat.</p>
+      <p class="get">
+        <a class="button" href="/download/otto.dmg">download otto</a>
+        <span class="note">version <span class="version">0.1.0</span>, for macOS 26 or later</span>
+      </p>
+    </div>
+    <div class="print" aria-hidden="true">
+      <canvas></canvas>
+      <svg class="leads"></svg>
+      <span class="tag" data-at="58 19 72 6"><i class="claude"></i>claude filled github.com</span>
+      <span class="tag" data-at="34 42 24 31"><i class="codex"></i>codex got a 2FA code</span>
+      <span class="tag" data-at="68 58 78 49">allowed with touch id</span>
+      <span class="tag" data-at="36 67 25 76"><i class="claude"></i>sudo pmset -a sleep 0</span>
+      <span class="tag" data-at="56 83 70 94">Stripe: bypass, 3 days</span>
+    </div>
+  </div>
+
+  <img class="shot" src="/img/main.webp" width="1000" height="640" alt="otto's window: logins down the side, and the activity of agents using them, like claude filling the Stripe login and codex getting a 2FA code for Vercel">
+</header>
+
+<main>
+<section class="why">
+  <p>your agent hit a login page, so you pasted <span class="secret">hunter2</span> into the chat. now it's in a transcript, on someone else's computer, for good.</p>
+  <p>with otto, the agent asks, otto fills it in, and the password stays on your Mac.</p>
+</section>
+
+<section class="features" id="features">
+  <article class="tile half top">
+    <div class="cap"><h2>saving a login</h2><p>the agent asks, you type it in. from then on it can use the login, and never see it.</p></div>
+    <img src="/img/request.webp" width="520" height="651" loading="lazy" alt="claude needs your github login: a window where you type the username, password and 2FA, with claude's reason">
+  </article>
+  <article class="tile half top">
+    <div class="cap"><h2>only on its own sites</h2><p>a login fills on the sites it belongs to. for a new one, you type the domain to allow it.</p></div>
+    <img src="/img/site.webp" width="520" height="491" loading="lazy" alt="claude wants to use your AWS login on a new site, eu-north-1.signin.aws.amazon.com, and you type amazon.com to allow it">
+  </article>
+  <article class="tile half">
+    <div class="cap"><h2>a rule for each login</h2><p>auto, Touch ID, never, or bypass while you're away. every use is logged.</p></div>
+    <img class="panel" src="/img/rules.webp" width="527" height="147" loading="lazy" alt="who can use a login in otto: Auto, Touch ID, Never or Bypass, and an optional limit to some projects or agents">
+  </article>
+  <article class="tile half">
+    <div class="cap"><h2>2FA codes</h2><p>otto keeps the authenticator secret and fills in the code. agents only ever see six digits.</p></div>
+    <img class="panel" src="/img/code.webp" width="600" height="205" loading="lazy" alt="a GitHub login in otto, showing its 2FA code 158 245 and the seconds it has left">
+  </article>
+  <article class="tile half tall">
+    <div class="cap"><h2>commands you decide on</h2><p>the agent shows you the exact command, where it runs and why. you allow it once, with Touch ID. if it needs a password, you fill that in and the agent doesn't see it.</p></div>
+    <img src="/img/command.webp" width="560" height="329" loading="lazy" alt="claude wants to run a command: sudo networksetup to switch the Wi-Fi DNS, with claude's reason under it and an Allow button with Touch ID">
+  </article>
+  <article class="tile half top">
+    <div class="cap"><h2>bypass</h2><p>away from the Mac? agents use one login without asking, for as long as you choose.</p></div>
+    <img src="/img/bypass.webp" width="540" height="625" loading="lazy" alt="claude wants bypass for your Hetzner login: what agents could do without asking, what stays true, and how long it lasts">
+  </article>
+</section>
+
+<section class="phone" id="phone">
+  <div class="device"><div class="screen"><img src="/img/phone.webp" width="390" height="720" loading="lazy" alt="otto's page on a phone: let claude fill Stripe's login? with boxes for the 6-digit PIN, and Allow and Don't allow"></div></div>
+  <div class="about">
+    <h2>from your phone</h2>
+    <p class="lead2">away from your Mac? tell your agent, and it sends you a link instead of waiting at the Mac. you open it on your phone and answer with your PIN.</p>
+    <p class="net">the page runs on your Mac and is reachable only <b>over your own Tailscale network</b>, from your own devices. it isn't on the internet, and nothing passes through a server of ours.</p>
+  </div>
+</section>
+
+<section class="more">
+  <h2>and also</h2>
+  <dl>
+    <div><dt>cards</dt><dd>fills the checkout after your Touch ID, payment frames included. never presses pay.</dd></div>
+    <div><dt>sudo</dt><dd>gives sudo your Mac password, for a command you've seen and allowed.</dd></div>
+    <div><dt>API keys</dt><dd>go to the program the agent runs, as environment variables, not to the agent.</dd></div>
+    <div><dt>importing</dt><dd>from Apple Passwords, Chrome, 1Password, Bitwarden and others, 2FA secrets included.</dd></div>
+  </dl>
+</section>
+
+<section class="where">
+  <h2>it stays on your Mac</h2>
+  <div>
+    <p>there's no otto account and no otto server. the vault is a standard KeePass file on your Mac, and its key is in your keychain.</p>
+  </div>
+</section>
+
+<section class="setup" id="setup">
+  <h2>setting it up</h2>
+  <div>
+    <ol>
+      <li><p><b>download otto</b> and drag it into Applications.</p></li>
+      <li><p><b>add <a href="/extension">the extension</a></b> to Chrome, Brave, Edge, Arc, Dia, Helium, Vivaldi, Opera, Comet or ChatGPT Atlas. using another browser? <a href="https://github.com/alfaoz/otto/issues/new?title=support+for+a+browser%3A+">ask for it</a>.</p></li>
+      <li><p><b>connect your agents</b> in otto's settings: Claude Code, Codex, Cursor, Gemini CLI, Windsurf, opencode, T3 Code, the Claude app. anything else that speaks MCP can run <code>otto mcp</code>.</p></li>
+      <li><p><b>bring your logins</b> from your old password manager.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="end">
+  <img class="icon" src="/img/icon.webp" width="256" height="256" loading="lazy" alt="otto's icon">
+  <p class="line">trust your agents the no-trust way.</p>
+  <p class="get">
+    <a class="button" href="/download/otto.dmg">download otto</a>
+    <span class="note">version <span class="version">0.1.0</span>, for macOS 26 or later</span>
+  </p>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="by"><a class="mark" href="/" aria-label="otto"><span>ot</span><span>to</span></a><p>made by <a href="https://alfaoz.dev">alfaoz</a></p></div>
+  <nav><a href="/privacy">privacy</a><a href="/privacy#terms">terms</a><a href="/download/otto.dmg">download</a></nav>
+</footer>
+
+</div>
+</body>
+</html>

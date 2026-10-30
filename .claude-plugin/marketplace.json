@@ -1,0 +1,12 @@
+{
+  "name": "otto",
+  "owner": { "name": "alfa" },
+  "plugins": [
+    {
+      "name": "otto",
+      "source": "./plugin",
+      "description": "Log in and get 2FA codes through the otto vault without ever seeing passwords",
+      "category": "security"
+    }
+  ]
+}

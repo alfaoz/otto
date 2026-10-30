@@ -1,0 +1,334 @@
+/* otto.alfaoz.dev: IBM Plex Mono on the icon's two colors. the dark parts are the icon's tile. */
+
+@font-face { font-family: "Plex Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url(/fonts/plex-mono-regular.woff2) format("woff2"); }
+@font-face { font-family: "Plex Mono"; font-weight: 400; font-style: italic; font-display: swap; src: url(/fonts/plex-mono-italic.woff2) format("woff2"); }
+@font-face { font-family: "Plex Mono"; font-weight: 600; font-style: normal; font-display: swap; src: url(/fonts/plex-mono-semibold.woff2) format("woff2"); }
+
+:root {
+  --paper: #f0ece2;
+  --ink: #161618;
+  --ink-2: #5c5a55;
+  --rule: rgb(22 22 24 / .14);
+  --wash: rgb(22 22 24 / .05);
+  --tile: linear-gradient(#28282b, #111113);
+  --tile-edge: transparent;
+  --on-tile: #f0ece2;
+  --on-tile-2: rgb(240 236 226 / .6);
+  --tile-ink: #161618;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --measure: 74rem;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #121214;
+    --ink: #f0ece2;
+    --ink-2: #a19e97;
+    --rule: rgb(240 236 226 / .14);
+    --wash: rgb(240 236 226 / .06);
+    --tile: linear-gradient(#232326, #18181a);
+    --tile-edge: rgb(240 236 226 / .08);
+  }
+}
+
+* { box-sizing: border-box; }
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1rem/1.625 "Plex Mono", ui-monospace, Menlo, monospace;
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; }
+::selection { background: var(--ink); color: var(--paper); }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; border-radius: 4px; }
+b { font-weight: 600; }
+code { font: inherit; background: var(--wash); padding: .05em .4ch; border-radius: 4px; }
+img { max-width: 100%; }
+h1, h2 { font-weight: 600; margin: 0; }
+
+/* the monogram, set in type: "ot" over "to" */
+.mark { display: inline-block; font-weight: 600; line-height: .95; letter-spacing: -.02em; text-decoration: none; }
+.mark span { display: block; }
+
+.button {
+  display: inline-block;
+  padding: .85rem 2.5ch;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity .15s;
+}
+.button:hover { opacity: .86; }
+.button.small { padding: .45rem 1.75ch; border-radius: 8px; font-size: .875rem; }
+.note { color: var(--ink-2); font-size: .875rem; }
+.get { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2.5ch; margin: 2.5rem 0 0; }
+
+/* ---- the stage: the icon's tile, holding the opening and otto's window ---- */
+
+.stage {
+  position: relative;
+  margin: clamp(.5rem, 1vw, .875rem);
+  padding-inline: var(--gutter);
+  border-radius: clamp(20px, 2.4vw, 34px);
+  background:
+    radial-gradient(42% 46% at 72% 36%, rgb(240 236 226 / .07), transparent 72%),
+    linear-gradient(#262629, #0d0d0f 78%);
+  box-shadow: inset 0 0 0 1px var(--tile-edge);
+  color: var(--on-tile);
+  overflow: hidden;
+}
+.stage > * { max-width: var(--measure); margin-inline: auto; }
+.stage .button { background: var(--on-tile); color: var(--tile-ink); }
+.stage .note { color: var(--on-tile-2); }
+
+.nav { display: flex; align-items: center; justify-content: space-between; padding-block: clamp(1.25rem, 3vw, 2rem); }
+.nav .mark { font-size: clamp(1.25rem, 1rem + 1vw, 1.625rem); }
+.links { display: flex; align-items: center; gap: 3ch; font-size: .9375rem; }
+.links a:not(.button) { color: var(--on-tile-2); text-decoration: none; transition: color .15s; }
+.links a:not(.button):hover { color: var(--on-tile); }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: center;
+  gap: 2rem 3ch;
+  padding-block: clamp(2rem, 7vh, 5rem) clamp(3rem, 8vh, 5.5rem);
+}
+h1 {
+  font-size: clamp(2.5rem, 1rem + 3.8vw, 4.25rem);
+  line-height: 1;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+.lead { margin: 2rem 0 0; max-width: 50ch; color: var(--on-tile-2); font-size: clamp(1rem, .9rem + .3vw, 1.1875rem); line-height: 1.6; }
+
+/* the fingerprint: site.js draws it in dots, with what agents did pinned to it */
+.print { position: relative; aspect-ratio: 1 / 1.06; }
+.print canvas, .print svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.print svg { overflow: visible; }
+.print line { stroke: rgb(240 236 226 / .45); stroke-width: 1; }
+.print rect { fill: none; stroke: var(--on-tile); stroke-width: 1; }
+.tag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+  padding: .3em 1.2ch;
+  border-radius: 5px;
+  background: var(--on-tile);
+  color: var(--tile-ink);
+  font-size: .8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .3s, translate .3s;
+  translate: 0 4px;
+}
+/* the agents' colors in otto */
+.tag i { width: .55em; height: .55em; border-radius: 50%; }
+.tag .claude { background: #d97857; }
+.tag .codex { background: #73c79e; }
+.tag.on { opacity: 1; translate: 0 0; }
+.print line, .print rect { opacity: 0; transition: opacity .3s; }
+.print .on { opacity: 1; }
+@media (scripting: none) { .print { display: none; } }
+
+.shot {
+  display: block;
+  width: min(100%, 1000px);
+  height: auto;
+  margin-bottom: max(-14%, -150px);
+  filter: drop-shadow(0 -2px 0 rgb(240 236 226 / .06)) drop-shadow(0 30px 60px rgb(0 0 0 / .5));
+}
+
+@media (max-width: 59.99rem) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .print { width: min(100%, 30rem); justify-self: center; }
+}
+@media (max-width: 35.99rem) {
+  .links a:not(.button) { display: none; }
+  .tag { font-size: .6875rem; }
+}
+
+/* ---- what otto is for ---- */
+
+main > section.why { margin-top: clamp(5rem, 11vw, 9rem); }
+.why p {
+  max-width: 30ch;
+  font-size: clamp(1.5rem, .9rem + 2.3vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -.035em;
+  text-wrap: pretty;
+}
+.why p:first-child { color: var(--ink-2); }
+.why p + p { margin-top: .7em; }
+/* the password, out in the open */
+.secret { padding: 0 .25ch; border-radius: .15em; background: var(--ink); color: var(--paper); }
+
+/* ---- what it does: otto's own windows ---- */
+
+main { max-width: var(--measure); margin-inline: auto; padding-inline: var(--gutter); }
+.features {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(.75rem, 1.2vw, 1rem);
+  margin-top: clamp(4rem, 9vw, 7.5rem);
+  scroll-margin-top: 2rem;
+}
+.tile {
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
+  min-height: 30rem;
+  padding-bottom: clamp(1.5rem, 2.4vw, 2.25rem);
+  overflow: hidden;
+  border-radius: clamp(18px, 2vw, 26px);
+  background:
+    radial-gradient(70% 55% at 60% 100%, rgb(240 236 226 / .06), transparent 70%),
+    var(--tile);
+  box-shadow: inset 0 0 0 1px var(--tile-edge);
+  color: var(--on-tile);
+}
+.tile.wide { grid-column: span 7; }
+.tile.half { grid-column: span 6; min-height: 0; }
+.cap { margin-bottom: 1.75rem; padding: clamp(1.5rem, 2.4vw, 2rem) clamp(1.5rem, 2.4vw, 2.25rem) 0; }
+.cap h2 { font-size: 1.0625rem; line-height: 1.35; letter-spacing: -.01em; }
+.cap p { margin: .375rem 0 0; max-width: 46ch; color: var(--on-tile-2); font-size: .9375rem; line-height: 1.55; }
+/* otto's windows, whole: at their own size where they fit, smaller where they don't, never cut */
+.tile > img {
+  display: block;
+  flex: none;
+  max-width: calc(100% - 2 * clamp(1.5rem, 2.4vw, 2.25rem));
+  height: auto;
+  max-height: 33rem;
+  margin: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 .5px rgb(240 236 226 / .45)) drop-shadow(0 24px 48px rgb(0 0 0 / .5));
+}
+/* a piece of a window: framed, with the page's corners */
+.tile > img.panel { border-radius: 14px; box-shadow: 0 0 0 1px rgb(240 236 226 / .1), 0 24px 48px rgb(0 0 0 / .4); filter: none; }
+/* a tall window: its top half, running off the bottom of the tile */
+.tile.top, .tile.tall { height: 33rem; }
+.tile.top { padding-bottom: 0; }
+.tile.top > img { max-height: none; margin: 0 auto; object-fit: fill; }
+.tile > img.fade { -webkit-mask-image: linear-gradient(#000 62%, transparent); mask-image: linear-gradient(#000 62%, transparent); box-shadow: 0 0 0 1px rgb(240 236 226 / .1); }
+
+@media (max-width: 59.99rem) {
+  .tile, .tile.wide, .tile.half { grid-column: span 12; min-height: 0; }
+  .tile.top { height: 28rem; }
+  .tile.tall { height: auto; }
+}
+
+/* ---- the phone ---- */
+
+main > section.phone {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: center;
+  gap: 3rem 6ch;
+  margin-top: clamp(5rem, 11vw, 9rem);
+}
+.device {
+  justify-self: center;
+  width: min(19rem, 78vw);
+  padding: .55rem;
+  border-radius: 3rem;
+  background: #0b0b0d;
+  box-shadow: inset 0 0 0 1px #3a3a3f, 0 40px 80px -24px rgb(0 0 0 / .5);
+}
+/* the screen runs to the top, round the island, in the page's own color */
+.screen { position: relative; overflow: hidden; padding-top: 2.6rem; border-radius: 2.45rem; background: #18181a; }
+.screen::before { content: ""; position: absolute; top: .6rem; left: 50%; width: 5.5rem; height: 1.5rem; margin-left: -2.75rem; border-radius: 1rem; background: #000; }
+.screen img { display: block; width: 100%; height: auto; }
+.about h2 { font-size: 1.3125rem; letter-spacing: -.015em; }
+.lead2 { margin-top: .75rem; font-size: 1.125rem; line-height: 1.6; }
+.more dt { font-weight: 600; }
+.net { margin-top: 1.5rem; color: var(--ink-2); }
+/* it's over Tailscale: that part reads first */
+.phone b { color: var(--ink); font-weight: 600; }
+@media (max-width: 59.99rem) {
+  main > section.phone { grid-template-columns: minmax(0, 1fr); }
+}
+/* ---- the end: the icon and one line ---- */
+
+main > section.end { display: grid; justify-items: center; margin-top: clamp(7rem, 14vw, 11rem); text-align: center; }
+.end .icon { width: clamp(9rem, 16vw, 12.5rem); height: auto; transition: transform .5s cubic-bezier(.3, 1.4, .5, 1); }
+.end .icon:hover { transform: rotate(-6deg) scale(1.04); }
+.end .line { margin-top: 1.5rem; max-width: 24ch; font-size: clamp(1.5rem, .9rem + 2.3vw, 2.75rem); font-weight: 600; line-height: 1.2; letter-spacing: -.035em; text-wrap: balance; }
+.end .get { justify-content: center; }
+
+/* ---- and the rest ---- */
+
+main > section:not(.features, .why, .phone, .end) {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  gap: 1.5rem 4ch;
+  margin-top: clamp(5rem, 11vw, 8.5rem);
+  scroll-margin-top: 2rem;
+}
+main > section:not(.features) h2 { max-width: 16ch; font-size: 1.3125rem; line-height: 1.3; letter-spacing: -.015em; }
+section p { margin: 0; max-width: 64ch; }
+section p + p { margin-top: 1rem; }
+
+.more dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 4ch; margin: 0; max-width: 60rem; }
+.more dt { font-weight: 600; }
+.more dd { margin: .25rem 0 0; color: var(--ink-2); font-size: .9375rem; line-height: 1.55; }
+
+.setup ol { margin: 0; padding: 0; list-style: none; counter-reset: step; }
+.setup li { display: grid; grid-template-columns: 4ch minmax(0, 1fr); counter-increment: step; }
+.setup li + li { margin-top: .875rem; }
+.setup li::before { content: counter(step); color: var(--ink-2); }
+.setup .get { margin-left: 4ch; }
+
+@media (max-width: 59.99rem) {
+  main > section:not(.features, .why, .phone, .end) { grid-template-columns: minmax(0, 1fr); }
+  main > section:not(.features) h2 { max-width: none; }
+}
+@media (max-width: 35.99rem) {
+  .more dl { grid-template-columns: minmax(0, 1fr); }
+  .setup .get { margin-left: 0; }
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 4ch;
+  max-width: var(--measure);
+  margin: clamp(5rem, 9vw, 7rem) auto 0;
+  padding: 2rem var(--gutter) 3rem;
+  color: var(--ink-2);
+  font-size: .875rem;
+}
+.foot .by { display: flex; align-items: center; gap: 2.5ch; }
+.foot .mark { color: var(--ink); font-size: 1.125rem; }
+.foot p { margin: 0; }
+.foot nav { display: flex; gap: 3ch; }
+.foot nav a { text-decoration: none; }
+.foot nav a:hover { color: var(--ink); text-decoration: underline; }
+
+/* ---- privacy and other pages of text ---- */
+
+.text { max-width: 66ch; padding-block: clamp(3rem, 8vh, 6rem) 0; }
+.text h1 { font-size: clamp(2rem, 1.2rem + 3vw, 3rem); }
+.text h2 { margin: 3.5rem 0 1rem; font-size: 1.3125rem; }
+.text h3 { margin: 2rem 0 .75rem; font-size: 1rem; font-weight: 600; }
+.text h2 + h3 { margin-top: 1.25rem; }
+.text p, .text li { max-width: 66ch; }
+.text p { margin: 0 0 1rem; }
+.text ul { margin: 0 0 1rem; padding-left: 2ch; }
+.text li + li { margin-top: .5rem; }
+.text .updated { margin-top: 1.5rem; color: var(--ink-2); font-size: .875rem; }

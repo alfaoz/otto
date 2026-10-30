@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "otto": {
+      "command": "sh",
+      "args": [
+        "-c",
+        "command -v otto >/dev/null 2>&1 && exec otto mcp; for d in \"$HOME/Applications\" /Applications; do [ -x \"$d/Otto.app/Contents/MacOS/otto\" ] && exec \"$d/Otto.app/Contents/MacOS/otto\" mcp; done; echo 'otto is not installed (Otto.app)' >&2; exit 1"
+      ]
+    }
+  }
+}

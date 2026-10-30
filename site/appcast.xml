@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+  <channel>
+    <title>otto</title>
+    <link>https://otto.alfaoz.dev/appcast.xml</link>
+    <item>
+      <title>otto 0.1.0</title>
+      <pubDate>Tue, 03 Nov 2026 23:13:27 +0000</pubDate>
+      <sparkle:version>0.1.0</sparkle:version>
+      <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <enclosure url="https://otto.alfaoz.dev/download/otto-0.1.0.dmg" length="5137875" type="application/octet-stream" sparkle:edSignature="9TQ6L5QjHjjwsDrYHQOZPT2rTSJP+ejvxVrTkStp1B4aP2hNK8i+UFVYrBL/+CrvWZ1r4lKiitEEbzE+c7HIDQ=="></enclosure>
+    </item>
+  </channel>
+</rss><!-- sparkle-signatures:
+edSignature: +W/BtN4X6TEm8h5pwWBQI84uV+2xNszUra6DR8EeRHrXjsB33HQD9Nn1FGYilfBwcoQKUMYQJemd6xuSDfKXDg==
+length: 1031
+-->

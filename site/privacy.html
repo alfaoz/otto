@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>otto: privacy and terms</title>
+<meta name="description" content="What otto, its Chrome extension and this website keep and send, and the terms for using them.">
+<meta name="theme-color" content="#f0ece2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161618" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/plex-mono-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/plex-mono-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="stage slim">
+  <nav class="nav">
+    <a class="mark" href="/" aria-label="otto"><span>ot</span><span>to</span></a>
+    <div class="links">
+      <a href="/#features">features</a>
+      <a href="/#setup">setup</a>
+      <a class="button small" href="/download/otto.dmg">download</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<article class="text">
+  <h1>privacy and terms</h1>
+  <p class="updated">updated 3 November 2026</p>
+
+  <p>otto has no account system and no server of its own. your vault never leaves your Mac, and nothing about you is sold or shared.</p>
+
+  <h2 id="privacy">privacy</h2>
+
+  <h3>the app</h3>
+  <ul>
+    <li>the vault (a KeePass file), its backups and the activity log are in your Library folder, and the vault's key is in your Mac's keychain. none of it is sent anywhere. the activity log says what agents asked for and how it went, never the secrets otto keeps.</li>
+    <li>to show a login's site icon, otto gets the icon from that site and keeps a copy on your Mac. the site sees a request from your Mac and nothing else.</li>
+    <li>every 24 hours, unless you turn it off in settings, otto checks otto.alfaoz.dev for a new version. updates are handled by Sparkle, and the check says only which version of otto you have.</li>
+    <li>if you turn on remote, your phone connects to your Mac through your own Tailscale network, and only devices on your Tailscale account can reach it. Tailscale's own privacy policy covers Tailscale.</li>
+    <li>if an agent asks otto to read a 2FA setup QR code from your screen, otto takes one picture of it, reads the code, and throws the picture away without saving it.</li>
+    <li>agents you connect get what you let them have: results like “filled”, 6-digit codes, and the values you hand to programs with <code>otto run</code>. what an agent, and the AI service behind it, does with those is up to them. otto does its best to keep things safe, but nothing is guaranteed on the agent's side.</li>
+  </ul>
+
+  <h3>the Chrome extension</h3>
+  <ul>
+    <li>it only talks to otto on your own Mac, through Chrome's native messaging. it keeps no history and sends nothing over the network.</li>
+    <li>when an agent asks otto to fill a login, a 2FA code or a card, the extension looks at your tabs' addresses to find the one on the right site, and fills the fields on that page.</li>
+    <li>when an agent asks otto to read a 2FA setup QR code, the extension takes a picture of that tab. otto reads the code from it on your Mac and throws the picture away without saving it.</li>
+    <li>what it does with your data follows the <a href="https://developer.chrome.com/docs/webstore/program-policies/limited-use">Chrome Web Store User Data Policy</a>, including its Limited Use requirements.</li>
+  </ul>
+
+  <h3>this website</h3>
+  <ul>
+    <li>this website has no cookies and no analytics, and neither does otto. the site loads nothing from anywhere else.</li>
+    <li>otto.alfaoz.dev keeps standard access logs (IP address, time, the page or file, the browser) for about two weeks, to keep it running. otto's update checks and downloads are in them too.</li>
+  </ul>
+
+  <h2 id="terms">terms</h2>
+  <p>otto is made by alfaoz. using otto or this website means you agree to these.</p>
+  <ul>
+    <li>otto is free. its source code is under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License, version 3</a>, and nothing in these terms takes away what that license gives you.</li>
+    <li>it comes as it is, with no warranty of any kind. it can have bugs, and in an app that holds your passwords, a bug can cost you something.</li>
+    <li>you set the rules, and otto follows them: a login on auto or bypass gets used without asking you, and anything you allow goes ahead. what happens after you allow something is on you.</li>
+    <li>agents make mistakes, and they can be tricked by what they read. once an agent is logged in, at a checkout or running a command, what it does there is between you and that agent.</li>
+    <li>the sites you log into, the shops you pay at and the AI services behind your agents have their own terms. some don't allow automated logins or purchases, and keeping to those is up to you.</li>
+    <li>use otto only for accounts, cards and Macs that are yours, or that you're allowed to use.</li>
+    <li>your vault is only on your Mac. keep a copy of its recovery key somewhere safe: if your keychain and the recovery key are both gone, nobody can open the vault, alfaoz included.</li>
+    <li>as far as the law allows, alfaoz isn't liable for any loss that comes from using otto or this website: lost data, money, accounts or access, or anything an agent does with what you allowed.</li>
+    <li>these terms are under Turkish law. rights that the law where you live doesn't let anyone take away still apply.</li>
+    <li>otto isn't made by or connected to Anthropic, OpenAI, Google, Apple, Tailscale or any other company named on this site. their names and logos belong to them.</li>
+    <li>these terms can change. the date at the top says when they last did, and using otto after a change means you agree to the new version.</li>
+  </ul>
+
+  <h2 id="contact">contact</h2>
+  <p>questions about otto or this page go to <a href="mailto:alfa.ozaltin@gmail.com">alfa.ozaltin@gmail.com</a>, and bugs to <a href="https://github.com/alfaoz/otto/issues">github.com/alfaoz/otto/issues</a>. report security problems privately on GitHub, through “report a vulnerability”.</p>
+</article>
+</main>
+
+<footer class="foot">
+  <div class="by"><a class="mark" href="/" aria-label="otto"><span>ot</span><span>to</span></a><p>made by <a href="https://alfaoz.dev">alfaoz</a></p></div>
+  <nav><a href="/privacy">privacy</a><a href="/privacy#terms">terms</a><a href="/download/otto.dmg">download</a></nav>
+</footer>
+</body>
+</html>

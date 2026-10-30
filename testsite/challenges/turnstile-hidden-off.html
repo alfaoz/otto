@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset=utf-8><title>Hidden Turnstile, button off until it solves</title>
+<style>body{font:15px -apple-system,system-ui;max-width:380px;margin:40px auto;padding:0 16px}
+input:not([type=checkbox]){display:block;width:100%;box-sizing:border-box;padding:8px;margin:6px 0 12px}
+.box{width:300px;height:65px;border:1px solid #ccc;margin:8px 0}</style></head><body><h2>Hidden Turnstile, button off until it solves</h2>
+<!-- PREVIEW: fake challenge fixture for otto's submit checks; window.sent counts submits -->
+<form id=f onsubmit="event.preventDefault(); window.sent = (window.sent || 0) + 1"><label>Username<input name=username autocomplete=username></label>
+<label>Password<input name=password type=password autocomplete=current-password></label><div class=cf-turnstile data-sitekey=x><input type=hidden name=cf-turnstile-response value=""></div><button type=submit disabled>Sign in</button></form></body></html>

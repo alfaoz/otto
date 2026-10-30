@@ -1,0 +1,18 @@
+{
+  "name": "otto",
+  "description": "Lets Claude log into sites and apps and fetch 2FA codes from your otto vault, without seeing your passwords. Needs Otto.app running.",
+  "version": "0.7.0",
+  "author": {
+    "name": "alfaoz",
+    "url": "https://alfaoz.dev"
+  },
+  "keywords": [
+    "passwords",
+    "2fa",
+    "totp",
+    "vault",
+    "login",
+    "secrets"
+  ],
+  "license": "GPL-3.0-or-later"
+}

@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "otto",
+  "description": "Fills logins, 2FA codes and cards from your otto vault into the right site when your agent asks, without the agent seeing them.",
+  "version": "0.1.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAze41YZbJxM/yjVJalG3UqD71ofujaF1QQtONgXjz6abmCjI4/JxUBMrCnNdsdoZqi+9f5S8ohKNzL+yR3hoGlQ4/p7APFJDXRlnOOzHcFp7oAQk0oEgPN0LwE4c+mGPaj1P5oVo626WP2uHq9j0z79vnZu3tr9LQdirMxCgRcfAkflqkjmoGxknETn7v5lQ6UF0ASPiYCfMSxmfhIfL1YO51w8oFlZkDP+Wr/vTQkQD19V0fgZWX9J/AJgIHJlcKD3Q8jxoV54PNl19p7JOQ3q6Y00nSSZNYCOHHodUaEKrNS3B/jaeEPa7OJVE3b+9WQbNwHPU0tGeEHjOJJ2wquwIDAQAB",
+  "minimum_chrome_version": "121",
+  "permissions": ["nativeMessaging", "scripting", "tabs", "offscreen"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "action": {
+    "default_title": "otto",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/toolbar-light-16.png", "24": "icons/toolbar-light-24.png", "32": "icons/toolbar-light-32.png" }
+  },
+  "icons": { "16": "icons/tile-16.png", "32": "icons/tile-32.png", "48": "icons/tile-48.png", "128": "icons/tile-128.png" }
+}
