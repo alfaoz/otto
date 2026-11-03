@@ -300,6 +300,32 @@ call("delete", {"id": next(x["id"] for x in call("entries") if x["name"] == "sig
 for x in call("trash"):
     call("purge", {"id": x["id"]})
 
+print("2e. the browser helper leaves when otto is updated or moved, so the browser starts the new one")
+import shutil
+def helper_dies_when(change):
+    d = tempfile.mkdtemp(prefix="oh-", dir="/tmp")
+    copy = os.path.join(d, "otto")
+    shutil.copy(exe, copy)
+    # no service in that home, so it just keeps trying, like during an update
+    h = subprocess.Popen([copy, "chrome-extension://abc/"], stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=dict(env, OTTO_HOME=d))
+    time.sleep(3)
+    alive = h.poll() is None
+    change(copy)
+    try:
+        h.wait(6)
+    except subprocess.TimeoutExpired:
+        h.kill()
+        return alive, False
+    return alive, True
+def replace(copy):
+    shutil.copy(exe, copy + ".new")
+    os.replace(copy + ".new", copy)
+alive, gone = helper_dies_when(replace)
+check("it keeps trying while its binary stays put", alive)
+check("a new binary in its place: it leaves", gone)
+alive, gone = helper_dies_when(lambda copy: os.rename(copy, copy + ".moved"))
+check("its binary moved away: it leaves", alive and gone)
+
 print("2d. how long otto waits is the user's setting")
 w = call("waits")
 check("the usual times", w == {"blanks": 900, "save": 900, "approve": 300, "mac_password": 270, "browser": 180, "phone": 900}, w)

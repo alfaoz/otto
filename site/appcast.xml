@@ -5,6 +5,15 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <title>otto</title>
     <link>https://otto.alfaoz.dev/appcast.xml</link>
     <item>
+      <title>otto 0.1.1</title>
+      <pubDate>Tue, 03 Nov 2026 23:39:36 +0000</pubDate>
+      <sparkle:version>0.1.1</sparkle:version>
+      <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>your browser reconnects to otto by itself after an update</li></ul>]]></description>
+      <enclosure url="https://otto.alfaoz.dev/download/otto-0.1.1.dmg" length="5140248" type="application/octet-stream" sparkle:edSignature="Q1s4TJcH+rarn0KT3B9qM4LTNqxwB6wmp4z4lJcBq5ITG+cv6vOhXl62rrwyyQhsyvD8a49UqYAOEiZDDpPTAg=="></enclosure>
+    </item>
+    <item>
       <title>otto 0.1.0</title>
       <pubDate>Tue, 03 Nov 2026 23:13:27 +0000</pubDate>
       <sparkle:version>0.1.0</sparkle:version>
@@ -14,6 +23,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: +W/BtN4X6TEm8h5pwWBQI84uV+2xNszUra6DR8EeRHrXjsB33HQD9Nn1FGYilfBwcoQKUMYQJemd6xuSDfKXDg==
-length: 1031
+edSignature: zXpPoedbn4KHC3nYyIsBny76Xu19im3DlWfPbXnjXvCQDC7wNPCq0q4GMFGLGpPlLCNALYKuMjo5kaHnCOE3BA==
+length: 1696
 -->

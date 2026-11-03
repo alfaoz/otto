@@ -1,5 +1,14 @@
 [
   {
+    "version": "0.1.1",
+    "date": "Tue, 03 Nov 2026 23:39:36 +0000",
+    "length": 5140248,
+    "ed_signature": "Q1s4TJcH+rarn0KT3B9qM4LTNqxwB6wmp4z4lJcBq5ITG+cv6vOhXl62rrwyyQhsyvD8a49UqYAOEiZDDpPTAg==",
+    "notes": [
+      "your browser reconnects to otto by itself after an update"
+    ]
+  },
+  {
     "version": "0.1.0",
     "date": "Tue, 03 Nov 2026 23:13:27 +0000",
     "length": 5137875,

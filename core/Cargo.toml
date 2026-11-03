@@ -1,6 +1,6 @@
 [package]
 name = "otto"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "a vault for coding agents: 2fa codes, logins and secrets they can use without seeing"
 license = "GPL-3.0-or-later"

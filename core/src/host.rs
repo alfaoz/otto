@@ -1,12 +1,14 @@
 //! Chrome native messaging host. Chrome starts `otto chrome-extension://<id>/` when the
 //! extension connects; this relays between the extension (length-prefixed JSON on stdio)
 //! and the otto service (JSON lines on the socket), reconnecting when the app restarts.
+//! An update replaces this binary, and the new service won't accept the old one, so a helper that finds
+//! itself replaced leaves: that closes the extension's port, and the extension starts the new helper.
 
 use serde_json::{json, Value};
 use std::{
     io::{BufRead, BufReader, Read, Write},
     os::unix::net::UnixStream,
-    path::Path,
+    path::{Path, PathBuf},
     process::{Command, Stdio},
     sync::{Arc, Mutex},
     thread,
@@ -28,12 +30,24 @@ fn send_native(out: &Out, v: &Value) {
     let _ = o.flush();
 }
 
+/// Which file this binary's path holds right now, if any.
+fn on_disk(path: &Option<PathBuf>) -> Option<(u64, u64)> {
+    use std::os::unix::fs::MetadataExt;
+    let m = std::fs::metadata(path.as_ref()?).ok()?;
+    Some((m.dev(), m.ino()))
+}
+
 pub fn run(origin: &str) -> anyhow::Result<()> {
+    let me = std::env::current_exe().ok();
+    let started_as = on_disk(&me);
     let out: Out = Arc::new(Mutex::new(std::io::stdout()));
     let sock: Arc<Mutex<Option<UnixStream>>> = Arc::new(Mutex::new(None));
 
     let (o2, s2, origin) = (out.clone(), sock.clone(), origin.to_string());
     thread::spawn(move || loop {
+        if started_as.is_some() && on_disk(&me) != started_as {
+            std::process::exit(0);
+        }
         let mut wait = Duration::from_secs(2);
         let mut refused = false;
         if let Ok(stream) = UnixStream::connect(paths::socket_path()) {
